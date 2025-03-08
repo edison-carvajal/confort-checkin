@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# 🏨 Confort Check-in 🌟
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción General
+**Confort Check-in** es una aplicación moderna para la gestión de hospedajes, hoteles y alojamientos. Facilita el proceso de check-in y check-out de huéspedes, manejo de habitaciones y seguimiento de reservas, todo desde una interfaz elegante y fácil de usar.
 
-## Available Scripts
+## ✨ Características Principales
 
-In the project directory, you can run:
+- 📊 **Dashboard Intuitivo**: Visualiza estadísticas clave como habitaciones ocupadas, check-ins activos y próximas llegadas/salidas.
+- 👥 **Gestión de Huéspedes**: Registra y administra toda la información de tus huéspedes.
+- 🔑 **Control de Check-ins/Check-outs**: Gestiona eficientemente las entradas y salidas.
+- 🛏️ **Administración de Habitaciones**: Visualiza qué habitaciones están ocupadas y disponibles.
+- ⚙️ **Configuración Personalizada**: Adapta la aplicación a las necesidades de tu negocio.
+- 📱 **Diseño Responsivo**: Funciona perfectamente en dispositivos móviles y de escritorio.
 
-### `npm start`
+## 🚀 Cómo Ejecutar Localmente
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Sigue estos sencillos pasos para ejecutar Confort Check-in en tu entorno local:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Requisitos Previos
+- Node.js (versión 14 o superior)
+- npm (normalmente viene con Node.js)
 
-### `npm test`
+### Pasos de Instalación
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clona el repositorio**
+   ```bash
+   git clone <URL-del-repositorio>
+   cd confort-checkin
+   ```
 
-### `npm run build`
+2. **Instala las dependencias**
+   ```bash
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Ejecuta la aplicación en modo desarrollo**
+   ```bash
+   npm start
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Accede a la aplicación**
+   - Abre tu navegador en [http://localhost:3000](http://localhost:3000)
+   - Si el puerto 3000 está ocupado, la aplicación intentará usar otro puerto automáticamente
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🔧 Puertos Alternativos
+Si necesitas ejecutar la aplicación en un puerto específico, puedes usar:
+```bash
+PORT=3002 npm start
+```
 
-### `npm run eject`
+## 🛠️ Tecnologías Utilizadas
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **React**: Biblioteca JavaScript para construir interfaces de usuario
+- **React Router**: Navegación entre páginas
+- **Material UI**: Componentes de interfaz de usuario modernos y responsivos
+- **Context API**: Gestión del estado de la aplicación
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🤝 Contribuciones
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+¡Las contribuciones son bienvenidas! Si deseas mejorar Confort Check-in:
+1. Haz un fork del repositorio
+2. Crea una rama para tu funcionalidad (`git checkout -b feature/nueva-funcionalidad`)
+3. Realiza tus cambios y haz commit (`git commit -m 'Agrega nueva funcionalidad'`)
+4. Envía tus cambios (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📝 Licencia
 
-## Learn More
+Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+⭐ **Hecho con ❤️ para facilitar la gestión de alojamientos** ⭐
