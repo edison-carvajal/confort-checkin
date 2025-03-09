@@ -27,7 +27,8 @@ import {
   InputLabel,
   Select,
   Snackbar,
-  Alert
+  Alert,
+  TablePagination
 } from '@mui/material';
 import { 
   Search as SearchIcon, 
@@ -47,6 +48,10 @@ const GuestsPage = () => {
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
   const theme = useTheme();
   
+  // Estado para paginación
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
   // Estado para el nuevo huésped
   const [newGuest, setNewGuest] = useState({
     firstName: '',
@@ -72,6 +77,17 @@ const GuestsPage = () => {
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
+    setPage(0); // Resetear a la primera página cuando se busca
+  };
+
+  // Manejadores para la paginación
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
   };
 
   const handleViewDetails = (guest) => {
@@ -233,7 +249,10 @@ const GuestsPage = () => {
               </TableHead>
               <TableBody>
                 {filteredGuests.length > 0 ? (
-                  filteredGuests.map((guest) => {
+                  (rowsPerPage > 0
+                    ? filteredGuests.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    : filteredGuests
+                  ).map((guest) => {
                     const guestCheckIns = getGuestCheckIns(guest.id);
                     return (
                       <TableRow key={guest.id} hover>
@@ -266,6 +285,17 @@ const GuestsPage = () => {
                 )}
               </TableBody>
             </Table>
+            <TablePagination
+              rowsPerPageOptions={[5, 10, 25]}
+              component="div"
+              count={filteredGuests.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              labelRowsPerPage="Filas por página:"
+              labelDisplayedRows={({ from, to, count }) => `${from}-${to} de ${count}`}
+            />
           </TableContainer>
         </CardContent>
       </Card>

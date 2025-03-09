@@ -73,6 +73,159 @@ const demoGuests = [
     phone: '+57 316 789 0123',
     idType: 'RC',
     idNumber: '12345678'
+  },
+  {
+    id: 'guest-9',
+    firstName: 'Daniela',
+    lastName: 'Restrepo',
+    email: 'daniela.restrepo@ejemplo.com',
+    phone: '+57 314 234 5678',
+    idType: 'CC',
+    idNumber: '1098765432'
+  },
+  {
+    id: 'guest-10',
+    firstName: 'Miguel',
+    lastName: 'Ángel',
+    email: 'miguel.angel@ejemplo.com',
+    phone: '+57 300 876 5432',
+    idType: 'CE',
+    idNumber: 'E234567890'
+  },
+  {
+    id: 'guest-11',
+    firstName: 'Valentina',
+    lastName: 'García',
+    email: 'valentina.garcia@ejemplo.com',
+    phone: '+57 317 345 6789',
+    idType: 'TI',
+    idNumber: '1001234567'
+  },
+  {
+    id: 'guest-12',
+    firstName: 'Andrés',
+    lastName: 'Medina',
+    email: 'andres.medina@ejemplo.com',
+    phone: '+57 312 567 8901',
+    idType: 'CC',
+    idNumber: '1234987650'
+  },
+  {
+    id: 'guest-13',
+    firstName: 'Gabriela',
+    lastName: 'Soto',
+    email: 'gabriela.soto@ejemplo.com',
+    phone: '+57 319 876 5432',
+    idType: 'PP',
+    idNumber: 'AP567890CO'
+  },
+  {
+    id: 'guest-14',
+    firstName: 'Camilo',
+    lastName: 'Díaz',
+    email: 'camilo.diaz@ejemplo.com',
+    phone: '+57 318 234 5678',
+    idType: 'CC',
+    idNumber: '1094567890'
+  },
+  {
+    id: 'guest-15',
+    firstName: 'Isabella',
+    lastName: 'Ramírez',
+    email: 'isabella.ramirez@ejemplo.com',
+    phone: '+57 315 890 1234',
+    idType: 'PPT',
+    idNumber: 'PPT12345678'
+  },
+  {
+    id: 'guest-16',
+    firstName: 'Javier',
+    lastName: 'Herrera',
+    email: 'javier.herrera@ejemplo.com',
+    phone: '+57 301 456 7890',
+    idType: 'CE',
+    idNumber: 'E876543210'
+  },
+  {
+    id: 'guest-17',
+    firstName: 'Natalia',
+    lastName: 'Quintero',
+    email: 'natalia.quintero@ejemplo.com',
+    phone: '+57 310 123 4567',
+    idType: 'CC',
+    idNumber: '1075432198'
+  },
+  {
+    id: 'guest-18',
+    firstName: 'Héctor',
+    lastName: 'Silva',
+    email: 'hector.silva@ejemplo.com',
+    phone: '+57 302 890 1234',
+    idType: 'PP',
+    idNumber: 'AP789012CO'
+  },
+  {
+    id: 'guest-19',
+    firstName: 'Carolina',
+    lastName: 'Castillo',
+    email: 'carolina.castillo@ejemplo.com',
+    phone: '+57 313 567 8901',
+    idType: 'CC',
+    idNumber: '1023456789'
+  },
+  {
+    id: 'guest-20',
+    firstName: 'Roberto',
+    lastName: 'Vargas',
+    email: 'roberto.vargas@ejemplo.com',
+    phone: '+57 321 234 5678',
+    idType: 'PEP',
+    idNumber: 'PEP87654321'
+  },
+  {
+    id: 'guest-21',
+    firstName: 'Empresa',
+    lastName: 'Constructora ABC',
+    email: 'info@constructoraabc.co',
+    phone: '+57 1 987 6543',
+    idType: 'NIT',
+    idNumber: '901.234.567-8'
+  },
+  {
+    id: 'guest-22',
+    firstName: 'Alejandra',
+    lastName: 'Torres',
+    email: 'alejandra.torres@ejemplo.com',
+    phone: '+57 316 123 4567',
+    idType: 'TI',
+    idNumber: '1001987654'
+  },
+  {
+    id: 'guest-23',
+    firstName: 'Mauricio',
+    lastName: 'López',
+    email: 'mauricio.lopez@ejemplo.com',
+    phone: '+57 305 678 9012',
+    idType: 'RC',
+    idNumber: '98765432'
+  },
+  {
+    id: 'guest-24',
+    firstName: 'Sofía',
+    lastName: 'Vanegas',
+    email: 'sofia.vanegas@ejemplo.com',
+    phone: '+57 319 012 3456',
+    idType: 'CC',
+    idNumber: '1087654321'
+  },
+  {
+    id: 'guest-25',
+    firstName: 'Fernando',
+    lastName: 'Arias',
+    email: 'fernando.arias@ejemplo.com',
+    phone: '+57 304 567 8901',
+    idType: 'PPT',
+    idNumber: 'PPT98765432'
   }
 ];
 
