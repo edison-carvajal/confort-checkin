@@ -21,21 +21,41 @@ import {
   Button, 
   Grid, 
   Divider,
-  useTheme 
+  useTheme,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Select,
+  Snackbar,
+  Alert
 } from '@mui/material';
 import { 
   Search as SearchIcon, 
   Visibility as VisibilityIcon, 
-  PersonAdd as PersonAddIcon
+  PersonAdd as PersonAddIcon,
+  Save as SaveIcon,
+  Cancel as CancelIcon
 } from '@mui/icons-material';
 import { useAppContext } from '../context/AppContext';
 
 const GuestsPage = () => {
-  const { state } = useAppContext();
+  const { state, actions } = useAppContext();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedGuest, setSelectedGuest] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
+  const [openNewGuestDialog, setOpenNewGuestDialog] = useState(false);
+  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
   const theme = useTheme();
+  
+  // Estado para el nuevo huésped
+  const [newGuest, setNewGuest] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    idType: 'CC',
+    idNumber: ''
+  });
 
   // Filtrar huéspedes según el término de búsqueda
   const filteredGuests = state.guests.filter(guest =>
@@ -63,9 +83,89 @@ const GuestsPage = () => {
     setOpenDialog(false);
   };
 
+  // Manejar apertura del diálogo de nuevo huésped
+  const handleOpenNewGuestDialog = () => {
+    setOpenNewGuestDialog(true);
+  };
+
+  // Manejar cierre del diálogo de nuevo huésped
+  const handleCloseNewGuestDialog = () => {
+    setOpenNewGuestDialog(false);
+    // Resetear el formulario
+    setNewGuest({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      idType: 'CC',
+      idNumber: ''
+    });
+  };
+
+  // Manejar cambios en el formulario de nuevo huésped
+  const handleNewGuestChange = (e) => {
+    const { name, value } = e.target;
+    setNewGuest(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Manejar guardado de nuevo huésped
+  const handleSaveNewGuest = () => {
+    // Validar campos requeridos
+    if (!newGuest.firstName || !newGuest.lastName || !newGuest.idNumber) {
+      setSnackbar({
+        open: true,
+        message: 'Por favor complete los campos obligatorios',
+        severity: 'error'
+      });
+      return;
+    }
+
+    // Crear un nuevo ID único para el huésped
+    const newGuestData = {
+      ...newGuest,
+      id: `guest-${Date.now()}`, // Crear un ID único basado en timestamp
+    };
+
+    // Añadir el nuevo huésped al estado global
+    actions.addGuest(newGuestData);
+
+    // Cerrar el diálogo y mostrar mensaje de éxito
+    handleCloseNewGuestDialog();
+    setSnackbar({
+      open: true,
+      message: '¡Huésped agregado exitosamente!',
+      severity: 'success'
+    });
+  };
+
+  // Manejar cierre del snackbar
+  const handleCloseSnackbar = () => {
+    setSnackbar(prev => ({ ...prev, open: false }));
+  };
+
   // Función para obtener el texto del tipo de ID
   const getIdTypeText = (idType) => {
     switch (idType) {
+      case 'CC':
+        return 'Cédula de Ciudadanía (CC)';
+      case 'TI':
+        return 'Tarjeta de Identidad (TI)';
+      case 'CE':
+        return 'Cédula de Extranjería (CE)';
+      case 'PP':
+        return 'Pasaporte (PP)';
+      case 'RC':
+        return 'Registro Civil (RC)';
+      case 'PEP':
+        return 'Permiso Especial de Permanencia (PEP)';
+      case 'PPT':
+        return 'Permiso por Protección Temporal (PPT)';
+      case 'NIT':
+        return 'NIT';
+      // Mantener compatibilidad con registros anteriores
       case 'passport':
         return 'Pasaporte';
       case 'nationalId':
@@ -94,6 +194,7 @@ const GuestsPage = () => {
           color="primary" 
           startIcon={<PersonAddIcon />}
           sx={{ height: 40 }}
+          onClick={handleOpenNewGuestDialog}
         >
           Nuevo Huésped
         </Button>
@@ -237,6 +338,132 @@ const GuestsPage = () => {
           </>
         )}
       </Dialog>
+
+      {/* Diálogo para agregar nuevo huésped */}
+      <Dialog 
+        open={openNewGuestDialog} 
+        onClose={handleCloseNewGuestDialog}
+        maxWidth="md"
+        fullWidth
+      >
+        <DialogTitle sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}>
+          Agregar Nuevo Huésped
+        </DialogTitle>
+        <DialogContent sx={{ mt: 2, pb: 3 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Nombre *"
+                name="firstName"
+                value={newGuest.firstName}
+                onChange={handleNewGuestChange}
+                margin="normal"
+                required
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Apellido *"
+                name="lastName"
+                value={newGuest.lastName}
+                onChange={handleNewGuestChange}
+                margin="normal"
+                required
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Email"
+                name="email"
+                type="email"
+                value={newGuest.email}
+                onChange={handleNewGuestChange}
+                margin="normal"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Teléfono"
+                name="phone"
+                value={newGuest.phone}
+                onChange={handleNewGuestChange}
+                margin="normal"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth margin="normal">
+                <InputLabel id="id-type-label">Tipo de Identificación *</InputLabel>
+                <Select
+                  labelId="id-type-label"
+                  name="idType"
+                  value={newGuest.idType}
+                  onChange={handleNewGuestChange}
+                  label="Tipo de Identificación *"
+                  required
+                >
+                  <MenuItem value="CC">Cédula de Ciudadanía (CC)</MenuItem>
+                  <MenuItem value="TI">Tarjeta de Identidad (TI)</MenuItem>
+                  <MenuItem value="CE">Cédula de Extranjería (CE)</MenuItem>
+                  <MenuItem value="PP">Pasaporte (PP)</MenuItem>
+                  <MenuItem value="RC">Registro Civil (RC)</MenuItem>
+                  <MenuItem value="PEP">Permiso Especial de Permanencia (PEP)</MenuItem>
+                  <MenuItem value="PPT">Permiso por Protección Temporal (PPT)</MenuItem>
+                  <MenuItem value="NIT">NIT</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Número de Identificación *"
+                name="idNumber"
+                value={newGuest.idNumber}
+                onChange={handleNewGuestChange}
+                margin="normal"
+                required
+              />
+            </Grid>
+          </Grid>
+        </DialogContent>
+        <DialogActions sx={{ p: 2 }}>
+          <Button 
+            variant="outlined" 
+            onClick={handleCloseNewGuestDialog} 
+            startIcon={<CancelIcon />}
+          >
+            Cancelar
+          </Button>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            onClick={handleSaveNewGuest}
+            startIcon={<SaveIcon />}
+          >
+            Guardar
+          </Button>
+        </DialogActions>
+      </Dialog>
+      
+      {/* Snackbar para notificaciones */}
+      <Snackbar 
+        open={snackbar.open} 
+        autoHideDuration={6000} 
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert 
+          onClose={handleCloseSnackbar} 
+          severity={snackbar.severity} 
+          elevation={6} 
+          variant="filled"
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
