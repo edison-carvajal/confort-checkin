@@ -1,0 +1,200 @@
+{
+  "common": {
+    "appName": "Confort Check-in",
+    "loading": "Cargando...",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "close": "Cerrar",
+    "search": "Buscar",
+    "add": "Agregar",
+    "saveChanges": "Guardar Cambios",
+    "actions": "Acciones",
+    "room": "Habitación",
+    "unknownGuest": "Huésped Desconocido",
+    "noData": "No hay datos disponibles"
+  },
+  "navigation": {
+    "dashboard": "Tablero",
+    "checkIn": "Check-in",
+    "guests": "Huéspedes",
+    "rooms": "Habitaciones",
+    "settings": "Configuración",
+    "help": "Ayuda"
+  },
+  "guests": {
+    "title": "Huéspedes",
+    "searchPlaceholder": "Buscar huésped...",
+    "addGuest": "Agregar Huésped",
+    "guestDetails": "Detalles del Huésped",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo Electrónico",
+    "phone": "Teléfono",
+    "idType": "Tipo de Identificación",
+    "idNumber": "Número de Identificación",
+    "idTypes": {
+      "CC": "Cédula de Ciudadanía",
+      "CE": "Cédula de Extranjería",
+      "TI": "Tarjeta de Identidad",
+      "PP": "Pasaporte",
+      "PPT": "Permiso por Protección Temporal",
+      "PEP": "Permiso Especial de Permanencia",
+      "NIT": "Número de Identificación Tributaria",
+      "RC": "Registro Civil"
+    }
+  },
+  "checkIn": {
+    "title": "Check-in",
+    "newCheckIn": "Nuevo Check-in",
+    "registeredGuests": "Huéspedes Registrados",
+    "checkInDetails": "Detalles del Check-in",
+    "roomNumber": "Número de Habitación",
+    "checkInDate": "Fecha de Check-in",
+    "checkOutDate": "Fecha de Check-out",
+    "numberOfGuests": "Número de Huéspedes",
+    "status": "Estado",
+    "statuses": {
+      "active": "Activo",
+      "pending": "Pendiente",
+      "completed": "Completado",
+      "cancelled": "Cancelado"
+    },
+    "selectGuest": "Seleccionar Huésped",
+    "noGuestSelected": "No se ha seleccionado ningún huésped",
+    "guestName": "Nombre del Huésped"
+  },
+  "validation": {
+    "required": "Este campo es requerido",
+    "invalidEmail": "El correo electrónico no es válido",
+    "invalidPhone": "El número de teléfono no es válido"
+  },
+  "pagination": {
+    "rowsPerPage": "Filas por página:",
+    "of": "de"
+  },
+  "settings": {
+    "title": "Configuración",
+    "hotelInfo": "Información del Hotel",
+    "hotelName": "Nombre del Hotel",
+    "address": "Dirección",
+    "email": "Email",
+    "phone": "Teléfono",
+    "schedules": "Horarios",
+    "checkInTime": "Hora de Check-In",
+    "checkOutTime": "Hora de Check-Out",
+    "notifications": "Notificaciones",
+    "enableEmailNotifications": "Habilitar notificaciones por email",
+    "enableSmsNotifications": "Habilitar notificaciones por SMS",
+    "defaultCurrency": "Moneda predeterminada",
+    "saveSettings": "Guardar Configuración",
+    "settingsSaved": "Configuración guardada correctamente",
+    "currencies": {
+      "usd": "USD - Dólar estadounidense",
+      "eur": "EUR - Euro",
+      "cop": "COP - Peso colombiano",
+      "mxn": "MXN - Peso mexicano"
+    }
+  },
+  "checkIn": {
+    "title": "Gestión de Check-In",
+    "newCheckIn": "Nuevo Check-In",
+    "registeredGuests": "Huéspedes Registrados"
+  },
+  "help": {
+    "title": "Ayuda y Soporte",
+    "faqs": "Preguntas Frecuentes",
+    "quickGuide": "Guía Rápida",
+    "technicalSupport": "Soporte Técnico",
+    "needHelp": "¿Necesitas ayuda adicional? Contacta a nuestro equipo de soporte:",
+    "email": "Email: soporte@comfortcheckin.com",
+    "phone": "Teléfono: +1 (555) 123-4567",
+    "faq": {
+      "q1": "¿Cómo registrar un nuevo check-in?",
+      "a1": "Para registrar un nuevo check-in, navega a la sección \"Check-In\" en el menú lateral y completa el formulario con los datos del huésped. Todos los campos marcados son obligatorios. Una vez completado, haz clic en \"Registrar Check-In\" para finalizar el proceso.",
+      "q2": "¿Cómo buscar a un huésped registrado?",
+      "a2": "Puedes buscar huéspedes de dos formas: 1) En la sección \"Check-In\", selecciona la pestaña \"Huéspedes Registrados\" y utiliza el buscador. 2) Accede directamente a la sección \"Huéspedes\" en el menú lateral y utiliza el buscador para filtrar por nombre, email o número de identificación.",
+      "q3": "¿Cómo modificar los datos de un check-in ya realizado?",
+      "a3": "Para modificar un check-in, navega a la sección \"Check-In\", selecciona la pestaña \"Huéspedes Registrados\", busca el registro que deseas modificar y haz clic en el icono de edición (lápiz). Realiza los cambios necesarios y guarda.",
+      "q4": "¿Cómo cambiar la configuración del sistema?",
+      "a4": "Accede a la sección \"Configuración\" en el menú lateral. Allí podrás modificar la información del hotel, horarios predeterminados, configuración de notificaciones y otros ajustes del sistema. Recuerda guardar los cambios al finalizar.",
+      "q5": "¿Puedo exportar los datos de los huéspedes?",
+      "a5": "Esta funcionalidad estará disponible en próximas actualizaciones. Por ahora, puedes ver todos los registros en la sección \"Huéspedes\"."
+    },
+    "guides": {
+      "checkIn": "Check-In",
+      "checkInDesc": "Registro de entrada de huéspedes",
+      "guests": "Huéspedes",
+      "guestsDesc": "Gestión de datos de los huéspedes",
+      "dashboard": "Dashboard",
+      "dashboardDesc": "Resumen y estadísticas generales",
+      "settings": "Configuración",
+      "settingsDesc": "Ajustes del sistema y preferencias"
+    }
+  },
+  "guests": {
+    "title": "Huéspedes",
+    "search": "Buscar huésped...",
+    "addGuest": "Agregar Huésped",
+    "viewDetails": "Ver Detalles",
+    "columns": {
+      "name": "Nombre",
+      "lastName": "Apellido",
+      "email": "Email",
+      "phone": "Teléfono",
+      "idNumber": "Número de ID",
+      "actions": "Acciones"
+    },
+    "dialog": {
+      "guestDetails": "Detalles del Huésped",
+      "personalInfo": "Información Personal",
+      "fullName": "Nombre Completo",
+      "identificationInfo": "Información de Identificación",
+      "idType": "Tipo de Documento",
+      "contactInfo": "Información de Contacto",
+      "checkInHistory": "Historial de Check-In",
+      "noCheckIns": "Este huésped no tiene registros de check-in.",
+      "close": "Cerrar"
+    },
+    "newGuest": {
+      "title": "Nuevo Huésped",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Email",
+      "phone": "Teléfono",
+      "idType": "Tipo de Documento",
+      "idNumber": "Número de Documento",
+      "cancel": "Cancelar",
+      "save": "Guardar",
+      "requiredFields": "Por favor complete los campos obligatorios",
+      "successMessage": "¡Huésped agregado exitosamente!"
+    },
+    "idTypes": {
+      "CC": "Cédula de Ciudadanía (CC)",
+      "TI": "Tarjeta de Identidad (TI)",
+      "CE": "Cédula de Extranjería (CE)",
+      "PP": "Pasaporte (PP)",
+      "RC": "Registro Civil (RC)",
+      "PEP": "Permiso Especial de Permanencia (PEP)",
+      "PPT": "Permiso por Protección Temporal (PPT)",
+      "NIT": "NIT",
+      "passport": "Pasaporte",
+      "nationalId": "Documento de Identidad",
+      "driverLicense": "Licencia de Conducir"
+    }
+  },
+  "dashboard": {
+    "title": "Tablero",
+    "stats": {
+      "totalGuests": "Huéspedes Totales",
+      "activeCheckins": "Check-ins Activos",
+      "occupiedRooms": "Habitaciones Ocupadas",
+      "checkinsToday": "Check-ins Hoy"
+    },
+    "upcomingCheckins": "Próximos Check-ins",
+    "upcomingCheckouts": "Próximos Check-outs",
+    "noUpcomingCheckins": "No hay próximos check-ins",
+    "noUpcomingCheckouts": "No hay próximos check-outs"
+  }
+}

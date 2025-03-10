@@ -1,0 +1,200 @@
+{
+  "common": {
+    "appName": "Confort Check-in",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "search": "Search",
+    "add": "Add",
+    "saveChanges": "Save Changes",
+    "actions": "Actions",
+    "room": "Room",
+    "unknownGuest": "Unknown Guest",
+    "noData": "No data available"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "checkIn": "Check-in",
+    "guests": "Guests",
+    "rooms": "Rooms",
+    "settings": "Settings",
+    "help": "Help"
+  },
+  "guests": {
+    "title": "Guests",
+    "searchPlaceholder": "Search guest...",
+    "addGuest": "Add Guest",
+    "guestDetails": "Guest Details",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "idType": "ID Type",
+    "idNumber": "ID Number",
+    "idTypes": {
+      "CC": "Citizenship Card",
+      "CE": "Foreign ID Card",
+      "TI": "Identity Card",
+      "PP": "Passport",
+      "PPT": "Temporary Protection Permit",
+      "PEP": "Special Stay Permit",
+      "NIT": "Tax Identification Number",
+      "RC": "Civil Registration"
+    }
+  },
+  "checkIn": {
+    "title": "Check-in",
+    "newCheckIn": "New Check-in",
+    "registeredGuests": "Registered Guests",
+    "checkInDetails": "Check-in Details",
+    "roomNumber": "Room Number",
+    "checkInDate": "Check-in Date",
+    "checkOutDate": "Check-out Date",
+    "numberOfGuests": "Number of Guests",
+    "status": "Status",
+    "statuses": {
+      "active": "Active",
+      "pending": "Pending",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "selectGuest": "Select Guest",
+    "noGuestSelected": "No guest selected",
+    "guestName": "Guest Name"
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalidEmail": "Invalid email address",
+    "invalidPhone": "Invalid phone number"
+  },
+  "pagination": {
+    "rowsPerPage": "Rows per page:",
+    "of": "of"
+  },
+  "settings": {
+    "title": "Settings",
+    "hotelInfo": "Hotel Information",
+    "hotelName": "Hotel Name",
+    "address": "Address",
+    "email": "Email",
+    "phone": "Phone",
+    "schedules": "Schedules",
+    "checkInTime": "Check-In Time",
+    "checkOutTime": "Check-Out Time",
+    "notifications": "Notifications",
+    "enableEmailNotifications": "Enable email notifications",
+    "enableSmsNotifications": "Enable SMS notifications",
+    "defaultCurrency": "Default Currency",
+    "saveSettings": "Save Settings",
+    "settingsSaved": "Settings saved successfully",
+    "currencies": {
+      "usd": "USD - US Dollar",
+      "eur": "EUR - Euro",
+      "cop": "COP - Colombian Peso",
+      "mxn": "MXN - Mexican Peso"
+    }
+  },
+  "checkIn": {
+    "title": "Check-In Management",
+    "newCheckIn": "New Check-In",
+    "registeredGuests": "Registered Guests"
+  },
+  "help": {
+    "title": "Help and Support",
+    "faqs": "Frequently Asked Questions",
+    "quickGuide": "Quick Guide",
+    "technicalSupport": "Technical Support",
+    "needHelp": "Need additional help? Contact our support team:",
+    "email": "Email: support@comfortcheckin.com",
+    "phone": "Phone: +1 (555) 123-4567",
+    "faq": {
+      "q1": "How do I register a new check-in?",
+      "a1": "To register a new check-in, navigate to the \"Check-In\" section in the sidebar and complete the form with the guest's information. All marked fields are mandatory. Once completed, click on \"Register Check-In\" to finish the process.",
+      "q2": "How do I search for a registered guest?",
+      "a2": "You can search for guests in two ways: 1) In the \"Check-In\" section, select the \"Registered Guests\" tab and use the search box. 2) Go directly to the \"Guests\" section in the sidebar and use the search box to filter by name, email, or ID number.",
+      "q3": "How can I modify data from a completed check-in?",
+      "a3": "To modify a check-in, navigate to the \"Check-In\" section, select the \"Registered Guests\" tab, find the record you want to modify and click on the edit icon (pencil). Make the necessary changes and save.",
+      "q4": "How do I change the system configuration?",
+      "a4": "Access the \"Settings\" section in the sidebar. There you can modify the hotel information, default schedules, notification settings, and other system settings. Remember to save the changes when you're done.",
+      "q5": "Can I export guest data?",
+      "a5": "This functionality will be available in future updates. For now, you can view all records in the \"Guests\" section."
+    },
+    "guides": {
+      "checkIn": "Check-In",
+      "checkInDesc": "Guest check-in registration",
+      "guests": "Guests",
+      "guestsDesc": "Guest data management",
+      "dashboard": "Dashboard",
+      "dashboardDesc": "Summary and general statistics",
+      "settings": "Settings",
+      "settingsDesc": "System settings and preferences"
+    }
+  },
+  "guests": {
+    "title": "Guests",
+    "search": "Search guest...",
+    "addGuest": "Add Guest",
+    "viewDetails": "View Details",
+    "columns": {
+      "name": "Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "idNumber": "ID Number",
+      "actions": "Actions"
+    },
+    "dialog": {
+      "guestDetails": "Guest Details",
+      "personalInfo": "Personal Information",
+      "fullName": "Full Name",
+      "identificationInfo": "Identification Information",
+      "idType": "ID Type",
+      "contactInfo": "Contact Information",
+      "checkInHistory": "Check-In History",
+      "noCheckIns": "This guest has no check-in records.",
+      "close": "Close"
+    },
+    "newGuest": {
+      "title": "New Guest",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "idType": "ID Type",
+      "idNumber": "ID Number",
+      "cancel": "Cancel",
+      "save": "Save",
+      "requiredFields": "Please complete the required fields",
+      "successMessage": "Guest added successfully!"
+    },
+    "idTypes": {
+      "CC": "Citizen ID (CC)",
+      "TI": "Identity Card (TI)",
+      "CE": "Foreigner ID (CE)",
+      "PP": "Passport (PP)",
+      "RC": "Civil Registry (RC)",
+      "PEP": "Special Permanence Permit (PEP)",
+      "PPT": "Temporary Protection Permit (PPT)",
+      "NIT": "Tax ID (NIT)",
+      "passport": "Passport",
+      "nationalId": "National ID",
+      "driverLicense": "Driver's License"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "stats": {
+      "totalGuests": "Total Guests",
+      "activeCheckins": "Active Check-ins",
+      "occupiedRooms": "Occupied Rooms",
+      "checkinsToday": "Check-ins Today"
+    },
+    "upcomingCheckins": "Upcoming Check-ins",
+    "upcomingCheckouts": "Upcoming Check-outs",
+    "noUpcomingCheckins": "No upcoming check-ins",
+    "noUpcomingCheckouts": "No upcoming check-outs"
+  }
+}

@@ -15,6 +15,7 @@ import {
   Paper,
   useTheme 
 } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { 
   ExpandMore as ExpandMoreIcon,
   HelpOutline as HelpIcon,
@@ -26,34 +27,35 @@ import {
 
 const HelpPage = () => {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const faqs = [
     {
-      question: '¿Cómo registrar un nuevo check-in?',
-      answer: 'Para registrar un nuevo check-in, navega a la sección "Check-In" en el menú lateral y completa el formulario con los datos del huésped. Todos los campos marcados son obligatorios. Una vez completado, haz clic en "Registrar Check-In" para finalizar el proceso.'
+      question: t('help.faq.q1'),
+      answer: t('help.faq.a1')
     },
     {
-      question: '¿Cómo buscar a un huésped registrado?',
-      answer: 'Puedes buscar huéspedes de dos formas: 1) En la sección "Check-In", selecciona la pestaña "Huéspedes Registrados" y utiliza el buscador. 2) Accede directamente a la sección "Huéspedes" en el menú lateral y utiliza el buscador para filtrar por nombre, email o número de identificación.'
+      question: t('help.faq.q2'),
+      answer: t('help.faq.a2')
     },
     {
-      question: '¿Cómo modificar los datos de un check-in ya realizado?',
-      answer: 'Para modificar un check-in, navega a la sección "Check-In", selecciona la pestaña "Huéspedes Registrados", busca el registro que deseas modificar y haz clic en el icono de edición (lápiz). Realiza los cambios necesarios y guarda.'
+      question: t('help.faq.q3'),
+      answer: t('help.faq.a3')
     },
     {
-      question: '¿Cómo cambiar la configuración del sistema?',
-      answer: 'Accede a la sección "Configuración" en el menú lateral. Allí podrás modificar la información del hotel, horarios predeterminados, configuración de notificaciones y otros ajustes del sistema. Recuerda guardar los cambios al finalizar.'
+      question: t('help.faq.q4'),
+      answer: t('help.faq.a4')
     },
     {
-      question: '¿Puedo exportar los datos de los huéspedes?',
-      answer: 'Esta funcionalidad estará disponible en próximas actualizaciones. Por ahora, puedes ver todos los registros en la sección "Huéspedes".'
+      question: t('help.faq.q5'),
+      answer: t('help.faq.a5')
     },
   ];
 
   return (
     <Box>
       <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 3 }}>
-        Ayuda y Soporte
+        {t('help.title')}
       </Typography>
 
       <Grid container spacing={3}>
@@ -61,7 +63,7 @@ const HelpPage = () => {
           <Card>
             <CardContent>
               <Typography variant="h5" gutterBottom>
-                Preguntas Frecuentes
+                {t('help.faqs')}
               </Typography>
               
               {faqs.map((faq, index) => (
@@ -92,7 +94,7 @@ const HelpPage = () => {
           <Card sx={{ height: '100%' }}>
             <CardContent>
               <Typography variant="h5" gutterBottom>
-                Guía Rápida
+                {t('help.quickGuide')}
               </Typography>
               
               <List>
@@ -101,8 +103,8 @@ const HelpPage = () => {
                     <CheckCircleIcon color="primary" />
                   </ListItemIcon>
                   <ListItemText 
-                    primary="Check-In" 
-                    secondary="Registro de entrada de huéspedes" 
+                    primary={t('help.guides.checkIn')} 
+                    secondary={t('help.guides.checkInDesc')} 
                   />
                 </ListItem>
                 <Divider />
@@ -111,8 +113,8 @@ const HelpPage = () => {
                     <PersonIcon color="primary" />
                   </ListItemIcon>
                   <ListItemText 
-                    primary="Huéspedes" 
-                    secondary="Gestión de datos de los huéspedes" 
+                    primary={t('help.guides.guests')} 
+                    secondary={t('help.guides.guestsDesc')} 
                   />
                 </ListItem>
                 <Divider />
@@ -121,8 +123,8 @@ const HelpPage = () => {
                     <HotelIcon color="primary" />
                   </ListItemIcon>
                   <ListItemText 
-                    primary="Dashboard" 
-                    secondary="Resumen y estadísticas generales" 
+                    primary={t('help.guides.dashboard')} 
+                    secondary={t('help.guides.dashboardDesc')} 
                   />
                 </ListItem>
                 <Divider />
@@ -131,8 +133,8 @@ const HelpPage = () => {
                     <SettingsIcon color="primary" />
                   </ListItemIcon>
                   <ListItemText 
-                    primary="Configuración" 
-                    secondary="Ajustes del sistema y preferencias" 
+                    primary={t('help.guides.settings')} 
+                    secondary={t('help.guides.settingsDesc')} 
                   />
                 </ListItem>
               </List>
@@ -148,16 +150,16 @@ const HelpPage = () => {
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                   <HelpIcon sx={{ mr: 1 }} />
-                  <Typography variant="h6">Soporte Técnico</Typography>
+                  <Typography variant="h6">{t('help.technicalSupport')}</Typography>
                 </Box>
                 <Typography variant="body2">
-                  ¿Necesitas ayuda adicional? Contacta a nuestro equipo de soporte:
+                  {t('help.needHelp')}
                 </Typography>
                 <Typography variant="body2" sx={{ mt: 1 }}>
-                  Email: soporte@comfortcheckin.com
+                  {t('help.email')}
                 </Typography>
                 <Typography variant="body2">
-                  Teléfono: +1 (555) 123-4567
+                  {t('help.phone')}
                 </Typography>
               </Paper>
             </CardContent>

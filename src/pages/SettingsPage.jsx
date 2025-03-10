@@ -15,9 +15,11 @@ import {
   useTheme 
 } from '@mui/material';
 import { Save as SaveIcon } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
 
 const SettingsPage = () => {
   const theme = useTheme();
+  const { t } = useTranslation();
   const [settings, setSettings] = React.useState({
     hotelName: 'Comfort Hotel',
     address: 'Av. Principal #123',
@@ -41,27 +43,27 @@ const SettingsPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // En una implementación real, aquí se guardarían los ajustes
-    alert('Configuración guardada correctamente');
+    alert(t('settings.settingsSaved'));
   };
 
   return (
     <Box>
       <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 3 }}>
-        Configuración
+        {t('settings.title')}
       </Typography>
 
       <Card>
         <CardContent>
           <Box component="form" onSubmit={handleSubmit}>
             <Typography variant="h6" gutterBottom sx={{ mb: 2 }}>
-              Información del Hotel
+              {t('settings.hotelInfo')}
             </Typography>
             
             <Grid container spacing={3} sx={{ mb: 4 }}>
               <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
-                  label="Nombre del Hotel"
+                  label={t('settings.hotelName')}
                   name="hotelName"
                   value={settings.hotelName}
                   onChange={handleChange}
@@ -70,7 +72,7 @@ const SettingsPage = () => {
               <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
-                  label="Dirección"
+                  label={t('settings.address')}
                   name="address"
                   value={settings.address}
                   onChange={handleChange}
@@ -79,7 +81,7 @@ const SettingsPage = () => {
               <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
-                  label="Email"
+                  label={t('settings.email')}
                   name="email"
                   type="email"
                   value={settings.email}
@@ -89,7 +91,7 @@ const SettingsPage = () => {
               <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
-                  label="Teléfono"
+                  label={t('settings.phone')}
                   name="phone"
                   value={settings.phone}
                   onChange={handleChange}
@@ -100,14 +102,14 @@ const SettingsPage = () => {
             <Divider sx={{ my: 3 }} />
             
             <Typography variant="h6" gutterBottom sx={{ mb: 2 }}>
-              Horarios
+              {t('settings.schedules')}
             </Typography>
             
             <Grid container spacing={3} sx={{ mb: 4 }}>
               <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
-                  label="Hora de Check-In"
+                  label={t('settings.checkInTime')}
                   name="checkInTime"
                   type="time"
                   value={settings.checkInTime}
@@ -118,7 +120,7 @@ const SettingsPage = () => {
               <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
-                  label="Hora de Check-Out"
+                  label={t('settings.checkOutTime')}
                   name="checkOutTime"
                   type="time"
                   value={settings.checkOutTime}
@@ -131,7 +133,7 @@ const SettingsPage = () => {
             <Divider sx={{ my: 3 }} />
             
             <Typography variant="h6" gutterBottom sx={{ mb: 2 }}>
-              Notificaciones
+              {t('settings.notifications')}
             </Typography>
             
             <Grid container spacing={3} sx={{ mb: 4 }}>
@@ -146,7 +148,7 @@ const SettingsPage = () => {
                         color="primary"
                       />
                     }
-                    label="Habilitar notificaciones por email"
+                    label={t('settings.enableEmailNotifications')}
                   />
                 </FormControl>
               </Grid>
@@ -161,7 +163,7 @@ const SettingsPage = () => {
                         color="primary"
                       />
                     }
-                    label="Habilitar notificaciones por SMS"
+                    label={t('settings.enableSmsNotifications')}
                   />
                 </FormControl>
               </Grid>
@@ -169,7 +171,7 @@ const SettingsPage = () => {
                 <TextField
                   fullWidth
                   select
-                  label="Moneda predeterminada"
+                  label={t('settings.defaultCurrency')}
                   name="defaultCurrency"
                   value={settings.defaultCurrency}
                   onChange={handleChange}
@@ -177,10 +179,10 @@ const SettingsPage = () => {
                     native: true,
                   }}
                 >
-                  <option value="USD">USD - Dólar estadounidense</option>
-                  <option value="EUR">EUR - Euro</option>
-                  <option value="COP">COP - Peso colombiano</option>
-                  <option value="MXN">MXN - Peso mexicano</option>
+                  <option value="USD">{t('settings.currencies.usd')}</option>
+                  <option value="EUR">{t('settings.currencies.eur')}</option>
+                  <option value="COP">{t('settings.currencies.cop')}</option>
+                  <option value="MXN">{t('settings.currencies.mxn')}</option>
                 </TextField>
               </Grid>
             </Grid>
@@ -193,7 +195,7 @@ const SettingsPage = () => {
                 startIcon={<SaveIcon />}
                 sx={{ px: 4 }}
               >
-                Guardar Configuración
+                {t('settings.saveSettings')}
               </Button>
             </Box>
           </Box>

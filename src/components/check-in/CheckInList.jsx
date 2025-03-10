@@ -31,9 +31,11 @@ import {
   Visibility as VisibilityIcon
 } from '@mui/icons-material';
 import { useAppContext } from '../../context/AppContext';
+import { useTranslation } from 'react-i18next';
 
 const CheckInList = () => {
   const { state, actions } = useAppContext();
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCheckin, setSelectedCheckin] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
@@ -157,11 +159,13 @@ const CheckInList = () => {
   const getStatusText = (status) => {
     switch (status) {
       case 'active':
-        return 'Activo';
+        return t('checkIn.statuses.active');
       case 'completed':
-        return 'Completado';
+        return t('checkIn.statuses.completed');
       case 'cancelled':
-        return 'Cancelado';
+        return t('checkIn.statuses.cancelled');
+      case 'pending':
+        return t('checkIn.statuses.pending');
       default:
         return status;
     }
@@ -171,14 +175,14 @@ const CheckInList = () => {
     <Card>
       <CardContent>
         <Typography variant="h5" component="h2" gutterBottom>
-          Huéspedes Registrados
+          {t('checkIn.registeredGuests')}
         </Typography>
         
         <Box sx={{ mb: 2 }}>
           <TextField
             fullWidth
             variant="outlined"
-            placeholder="Buscar por nombre, habitación o email..."
+            placeholder={t('checkIn.searchPlaceholder')}
             value={searchTerm}
             onChange={handleSearchChange}
             InputProps={{
@@ -195,12 +199,12 @@ const CheckInList = () => {
           <Table>
             <TableHead sx={{ backgroundColor: theme.palette.primary.main }}>
               <TableRow>
-                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Huésped</TableCell>
-                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Habitación</TableCell>
-                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Check-In</TableCell>
-                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Check-Out</TableCell>
-                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Estado</TableCell>
-                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Acciones</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('checkIn.guestName')}</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('checkIn.roomNumber')}</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('checkIn.checkInDate')}</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('checkIn.checkOutDate')}</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('checkIn.status')}</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('common.actions')}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -288,15 +292,15 @@ const CheckInList = () => {
                     <Typography><strong>Fecha Check-In:</strong> {formatDate(selectedCheckin.checkInDate)}</Typography>
                     <Typography><strong>Fecha Check-Out:</strong> {formatDate(selectedCheckin.checkOutDate)}</Typography>
                     <Typography><strong>Número de Huéspedes:</strong> {selectedCheckin.numberOfGuests}</Typography>
-                    <Typography sx={{ mt: 1 }}>
-                      <strong>Estado:</strong> 
+                    <Box sx={{ mt: 1, display: 'flex', alignItems: 'center' }}>
+                      <Typography component="span"><strong>Estado:</strong></Typography>
                       <Chip 
                         label={getStatusText(selectedCheckin.status)} 
                         color={getStatusColor(selectedCheckin.status)}
                         size="small"
                         sx={{ ml: 1 }}
                       />
-                    </Typography>
+                    </Box>
                   </Grid>
                 </Grid>
               ) : (

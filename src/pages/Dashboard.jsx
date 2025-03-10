@@ -7,6 +7,7 @@ import {
   EventOutlined as EventIcon 
 } from '@mui/icons-material';
 import { useAppContext } from '../context/AppContext';
+import { useTranslation } from 'react-i18next';
 
 const StatCard = ({ title, value, icon, color }) => {
   const theme = useTheme();
@@ -70,6 +71,7 @@ const StatCard = ({ title, value, icon, color }) => {
 const Dashboard = () => {
   const { state } = useAppContext();
   const theme = useTheme();
+  const { t } = useTranslation();
   
   // Cálculo de estadísticas
   const totalGuests = state.guests.length;
@@ -85,13 +87,13 @@ const Dashboard = () => {
   return (
     <Box>
       <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 4 }}>
-        Dashboard
+        {t('dashboard.title')}
       </Typography>
       
       <Grid container spacing={{ xs: 2, md: 3 }} sx={{ mb: { xs: 3, md: 5 } }}>
         <Grid item xs={12} sm={6} lg={3}>
           <StatCard 
-            title="Huéspedes Totales" 
+            title={t('dashboard.stats.totalGuests')} 
             value={totalGuests} 
             icon={<PeopleIcon sx={{ color: 'white', fontSize: { xs: '1.3rem', sm: '1.5rem' } }} />} 
             color={theme.palette.primary.main}
@@ -99,7 +101,7 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={12} sm={6} lg={3}>
           <StatCard 
-            title="Check-ins Activos" 
+            title={t('dashboard.stats.activeCheckins')} 
             value={activeCheckins} 
             icon={<CheckInIcon sx={{ color: 'white', fontSize: { xs: '1.3rem', sm: '1.5rem' } }} />} 
             color="#2e7d32" // verde
@@ -107,7 +109,7 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={12} sm={6} lg={3}>
           <StatCard 
-            title="Habitaciones Ocupadas" 
+            title={t('dashboard.stats.occupiedRooms')} 
             value={occupiedRooms} 
             icon={<HotelIcon sx={{ color: 'white', fontSize: { xs: '1.3rem', sm: '1.5rem' } }} />} 
             color="#1976d2" // azul
@@ -115,7 +117,7 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={12} sm={6} lg={3}>
           <StatCard 
-            title="Check-ins Hoy" 
+            title={t('dashboard.stats.checkinsToday')} 
             value={checkinsToday} 
             icon={<EventIcon sx={{ color: 'white', fontSize: { xs: '1.3rem', sm: '1.5rem' } }} />} 
             color="#ed6c02" // naranja
@@ -128,7 +130,7 @@ const Dashboard = () => {
           <Card sx={{ height: '100%', boxShadow: 3 }}>
             <CardContent>
               <Typography variant="h6" component="h2" gutterBottom>
-                Próximos Check-ins
+                {t('dashboard.upcomingCheckins')}
               </Typography>
               
               {state.checkins.length > 0 ? (
@@ -153,10 +155,10 @@ const Dashboard = () => {
                         >
                           <Box>
                             <Typography variant="subtitle1" fontWeight="bold">
-                              {guest ? `${guest.firstName} ${guest.lastName}` : 'Huésped Desconocido'}
+                              {guest ? `${guest.firstName} ${guest.lastName}` : t('common.unknownGuest')}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                              Habitación: {checkin.roomNumber}
+                              {t('common.room')}: {checkin.roomNumber}
                             </Typography>
                           </Box>
                           <Typography variant="body2">
@@ -169,7 +171,7 @@ const Dashboard = () => {
               ) : (
                 <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4, mb: 4 }}>
                   <Typography variant="body1" color="text.secondary">
-                    No hay próximos check-ins
+                    {t('dashboard.noUpcomingCheckins')}
                   </Typography>
                 </Box>
               )}
@@ -181,7 +183,7 @@ const Dashboard = () => {
           <Card sx={{ height: '100%', boxShadow: 3 }}>
             <CardContent>
               <Typography variant="h6" component="h2" gutterBottom>
-                Próximos Check-outs
+                {t('dashboard.upcomingCheckouts')}
               </Typography>
               
               {state.checkins.length > 0 ? (
@@ -209,10 +211,10 @@ const Dashboard = () => {
                         >
                           <Box>
                             <Typography variant="subtitle1" fontWeight="bold">
-                              {guest ? `${guest.firstName} ${guest.lastName}` : 'Huésped Desconocido'}
+                              {guest ? `${guest.firstName} ${guest.lastName}` : t('common.unknownGuest')}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                              Habitación: {checkin.roomNumber}
+                              {t('common.room')}: {checkin.roomNumber}
                             </Typography>
                           </Box>
                           <Typography variant="body2">
@@ -225,7 +227,7 @@ const Dashboard = () => {
               ) : (
                 <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4, mb: 4 }}>
                   <Typography variant="body1" color="text.secondary">
-                    No hay próximos check-outs
+                    {t('dashboard.noUpcomingCheckouts')}
                   </Typography>
                 </Box>
               )}

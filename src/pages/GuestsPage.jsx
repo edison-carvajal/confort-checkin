@@ -38,6 +38,7 @@ import {
   Cancel as CancelIcon
 } from '@mui/icons-material';
 import { useAppContext } from '../context/AppContext';
+import { useTranslation } from 'react-i18next';
 
 const GuestsPage = () => {
   const { state, actions } = useAppContext();
@@ -47,6 +48,7 @@ const GuestsPage = () => {
   const [openNewGuestDialog, setOpenNewGuestDialog] = useState(false);
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
   const theme = useTheme();
+  const { t } = useTranslation();
   
   // Estado para paginación
   const [page, setPage] = useState(0);
@@ -133,7 +135,7 @@ const GuestsPage = () => {
     if (!newGuest.firstName || !newGuest.lastName || !newGuest.idNumber) {
       setSnackbar({
         open: true,
-        message: 'Por favor complete los campos obligatorios',
+        message: t('guests.newGuest.requiredFields'),
         severity: 'error'
       });
       return;
@@ -152,7 +154,7 @@ const GuestsPage = () => {
     handleCloseNewGuestDialog();
     setSnackbar({
       open: true,
-      message: '¡Huésped agregado exitosamente!',
+      message: t('guests.newGuest.successMessage'),
       severity: 'success'
     });
   };
@@ -164,33 +166,7 @@ const GuestsPage = () => {
 
   // Función para obtener el texto del tipo de ID
   const getIdTypeText = (idType) => {
-    switch (idType) {
-      case 'CC':
-        return 'Cédula de Ciudadanía (CC)';
-      case 'TI':
-        return 'Tarjeta de Identidad (TI)';
-      case 'CE':
-        return 'Cédula de Extranjería (CE)';
-      case 'PP':
-        return 'Pasaporte (PP)';
-      case 'RC':
-        return 'Registro Civil (RC)';
-      case 'PEP':
-        return 'Permiso Especial de Permanencia (PEP)';
-      case 'PPT':
-        return 'Permiso por Protección Temporal (PPT)';
-      case 'NIT':
-        return 'NIT';
-      // Mantener compatibilidad con registros anteriores
-      case 'passport':
-        return 'Pasaporte';
-      case 'nationalId':
-        return 'Documento de Identidad';
-      case 'driverLicense':
-        return 'Licencia de Conducir';
-      default:
-        return idType;
-    }
+    return t(`guests.idTypes.${idType}`) || idType;
   };
 
   // Formatear fecha para mostrar
@@ -203,7 +179,7 @@ const GuestsPage = () => {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
         <Typography variant="h4" component="h1" gutterBottom>
-          Huéspedes
+          {t('guests.title')}
         </Typography>
         <Button 
           variant="contained" 
@@ -212,7 +188,7 @@ const GuestsPage = () => {
           sx={{ height: 40 }}
           onClick={handleOpenNewGuestDialog}
         >
-          Nuevo Huésped
+          {t('guests.addGuest')}
         </Button>
       </Box>
 
@@ -222,7 +198,7 @@ const GuestsPage = () => {
             <TextField
               fullWidth
               variant="outlined"
-              placeholder="Buscar por nombre, email o número de ID..."
+              placeholder={t('guests.search')}
               value={searchTerm}
               onChange={handleSearchChange}
               InputProps={{
@@ -239,12 +215,12 @@ const GuestsPage = () => {
             <Table>
               <TableHead sx={{ backgroundColor: theme.palette.primary.main }}>
                 <TableRow>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Nombre</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Email</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Teléfono</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Identificación</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('guests.columns.name')}</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('guests.columns.email')}</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('guests.columns.phone')}</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('guests.columns.idNumber')}</TableCell>
                   <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Estancias</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Acciones</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('guests.columns.actions')}</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -315,7 +291,7 @@ const GuestsPage = () => {
             <DialogContent sx={{ mt: 2 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12} md={6}>
-                  <Typography variant="h6" gutterBottom>Información Personal</Typography>
+                  <Typography variant="h6" gutterBottom>{t('guests.dialog.personalInfo')}</Typography>
                   <Typography><strong>Nombre:</strong> {`${selectedGuest.firstName} ${selectedGuest.lastName}`}</Typography>
                   <Typography><strong>Email:</strong> {selectedGuest.email}</Typography>
                   <Typography><strong>Teléfono:</strong> {selectedGuest.phone}</Typography>
@@ -324,7 +300,7 @@ const GuestsPage = () => {
                 
                 <Grid item xs={12}>
                   <Divider sx={{ my: 2 }} />
-                  <Typography variant="h6" gutterBottom>Historial de Check-ins</Typography>
+                  <Typography variant="h6" gutterBottom>{t('guests.dialog.checkInHistory')}</Typography>
                   
                   {getGuestCheckIns(selectedGuest.id).length > 0 ? (
                     <TableContainer component={Paper} sx={{ mt: 2 }}>
@@ -351,7 +327,7 @@ const GuestsPage = () => {
                     </TableContainer>
                   ) : (
                     <Typography variant="body1" color="text.secondary" sx={{ mt: 1 }}>
-                      No hay registros de check-in para este huésped
+                      {t('guests.dialog.noCheckIns')}
                     </Typography>
                   )}
                 </Grid>
@@ -359,7 +335,7 @@ const GuestsPage = () => {
             </DialogContent>
             <DialogActions>
               <Button onClick={handleCloseDialog} color="primary">
-                Cerrar
+                {t('guests.dialog.close')}
               </Button>
               <Button color="primary" variant="contained">
                 Editar
@@ -377,14 +353,14 @@ const GuestsPage = () => {
         fullWidth
       >
         <DialogTitle sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}>
-          Agregar Nuevo Huésped
+          {t('guests.newGuest.title')}
         </DialogTitle>
         <DialogContent sx={{ mt: 2, pb: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Nombre *"
+                label={`${t('guests.newGuest.firstName')} *`}
                 name="firstName"
                 value={newGuest.firstName}
                 onChange={handleNewGuestChange}
@@ -395,7 +371,7 @@ const GuestsPage = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Apellido *"
+                label={`${t('guests.newGuest.lastName')} *`}
                 name="lastName"
                 value={newGuest.lastName}
                 onChange={handleNewGuestChange}
@@ -406,7 +382,7 @@ const GuestsPage = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Email"
+                label={t('guests.newGuest.email')}
                 name="email"
                 type="email"
                 value={newGuest.email}
@@ -417,7 +393,7 @@ const GuestsPage = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Teléfono"
+                label={t('guests.newGuest.phone')}
                 name="phone"
                 value={newGuest.phone}
                 onChange={handleNewGuestChange}
@@ -426,30 +402,30 @@ const GuestsPage = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth margin="normal">
-                <InputLabel id="id-type-label">Tipo de Identificación *</InputLabel>
+                <InputLabel id="id-type-label">{`${t('guests.newGuest.idType')} *`}</InputLabel>
                 <Select
                   labelId="id-type-label"
                   name="idType"
                   value={newGuest.idType}
                   onChange={handleNewGuestChange}
-                  label="Tipo de Identificación *"
+                  label={`${t('guests.newGuest.idType')} *`}
                   required
                 >
-                  <MenuItem value="CC">Cédula de Ciudadanía (CC)</MenuItem>
-                  <MenuItem value="TI">Tarjeta de Identidad (TI)</MenuItem>
-                  <MenuItem value="CE">Cédula de Extranjería (CE)</MenuItem>
-                  <MenuItem value="PP">Pasaporte (PP)</MenuItem>
-                  <MenuItem value="RC">Registro Civil (RC)</MenuItem>
-                  <MenuItem value="PEP">Permiso Especial de Permanencia (PEP)</MenuItem>
-                  <MenuItem value="PPT">Permiso por Protección Temporal (PPT)</MenuItem>
-                  <MenuItem value="NIT">NIT</MenuItem>
+                  <MenuItem value="CC">{t('guests.idTypes.CC')}</MenuItem>
+                  <MenuItem value="TI">{t('guests.idTypes.TI')}</MenuItem>
+                  <MenuItem value="CE">{t('guests.idTypes.CE')}</MenuItem>
+                  <MenuItem value="PP">{t('guests.idTypes.PP')}</MenuItem>
+                  <MenuItem value="RC">{t('guests.idTypes.RC')}</MenuItem>
+                  <MenuItem value="PEP">{t('guests.idTypes.PEP')}</MenuItem>
+                  <MenuItem value="PPT">{t('guests.idTypes.PPT')}</MenuItem>
+                  <MenuItem value="NIT">{t('guests.idTypes.NIT')}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Número de Identificación *"
+                label={`${t('guests.newGuest.idNumber')} *`}
                 name="idNumber"
                 value={newGuest.idNumber}
                 onChange={handleNewGuestChange}
@@ -465,7 +441,7 @@ const GuestsPage = () => {
             onClick={handleCloseNewGuestDialog} 
             startIcon={<CancelIcon />}
           >
-            Cancelar
+            {t('guests.newGuest.cancel')}
           </Button>
           <Button 
             variant="contained" 
@@ -473,7 +449,7 @@ const GuestsPage = () => {
             onClick={handleSaveNewGuest}
             startIcon={<SaveIcon />}
           >
-            Guardar
+            {t('guests.newGuest.save')}
           </Button>
         </DialogActions>
       </Dialog>

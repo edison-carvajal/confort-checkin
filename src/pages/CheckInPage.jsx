@@ -2,10 +2,12 @@ import React from 'react';
 import { Box, Typography, Tabs, Tab, Paper, useTheme } from '@mui/material';
 import CheckInForm from '../components/check-in/CheckInForm';
 import CheckInList from '../components/check-in/CheckInList';
+import { useTranslation } from 'react-i18next';
 
 const CheckInPage = () => {
   const [tabValue, setTabValue] = React.useState(0);
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -14,7 +16,7 @@ const CheckInPage = () => {
   return (
     <Box sx={{ width: '100%' }}>
       <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 3 }}>
-        Gestión de Check-In
+        {t('checkIn.title')}
       </Typography>
 
       <Paper sx={{ width: '100%', mb: 4 }}>
@@ -35,8 +37,8 @@ const CheckInPage = () => {
             borderRadius: '12px 12px 0 0',
           }}
         >
-          <Tab label="Nuevo Check-In" />
-          <Tab label="Huéspedes Registrados" />
+          <Tab label={t('checkIn.newCheckIn')} />
+          <Tab label={t('checkIn.registeredGuests')} />
         </Tabs>
       </Paper>
 

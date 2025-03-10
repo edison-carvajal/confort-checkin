@@ -22,22 +22,25 @@ import {
   Help as HelpIcon 
 } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const { t } = useTranslation();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const menuItems = [
-    { text: 'Dashboard', icon: <DashboardIcon />, path: '/' },
-    { text: 'Check-In', icon: <CheckInIcon />, path: '/check-in' },
-    { text: 'Huéspedes', icon: <GuestsIcon />, path: '/guests' },
-    { text: 'Configuración', icon: <SettingsIcon />, path: '/settings' },
-    { text: 'Ayuda', icon: <HelpIcon />, path: '/help' },
+    { text: t('navigation.dashboard'), icon: <DashboardIcon />, path: '/' },
+    { text: t('navigation.checkIn'), icon: <CheckInIcon />, path: '/check-in' },
+    { text: t('navigation.guests'), icon: <GuestsIcon />, path: '/guests' },
+    { text: t('navigation.settings'), icon: <SettingsIcon />, path: '/settings' },
+    { text: t('navigation.help'), icon: <HelpIcon />, path: '/help' },
   ];
 
   const drawerWidth = 200;
@@ -46,7 +49,7 @@ const Header = () => {
     <Box sx={{ width: drawerWidth }}>
       <Box sx={{ py: 1.5, px: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', color: theme.palette.primary.main, fontSize: '1.1rem', textAlign: 'center' }}>
-          Comfort Check-In
+          {t('common.appName')}
         </Typography>
       </Box>
       <List>
@@ -91,8 +94,11 @@ const Header = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Comfort Check-In
+            {t('common.appName')}
           </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <LanguageSwitcher />
+          </Box>
         </Toolbar>
       </AppBar>
 

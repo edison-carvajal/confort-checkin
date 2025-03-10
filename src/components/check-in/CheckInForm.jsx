@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useAppContext } from '../../context/AppContext';
 import { v4 as uuidv4 } from 'uuid';
+import { useTranslation } from 'react-i18next';
 
 // Esquema de validación
 const CheckInSchema = Yup.object().shape({
@@ -51,6 +52,7 @@ const idTypes = [
 
 const CheckInForm = () => {
   const { state, actions } = useAppContext();
+  const { t } = useTranslation();
   const [showAlert, setShowAlert] = React.useState(false);
   const [alertMessage, setAlertMessage] = React.useState('');
   const [alertSeverity, setAlertSeverity] = React.useState('success');
