@@ -34,6 +34,14 @@
     "phone": "Phone",
     "idType": "ID Type",
     "idNumber": "ID Number",
+    "columns": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "idNumber": "ID Number",
+      "stays": "Stays",
+      "actions": "Actions"
+    },
     "idTypes": {
       "CC": "Citizenship Card",
       "CE": "Foreign ID Card",
@@ -46,14 +54,25 @@
     }
   },
   "checkIn": {
-    "title": "Check-in",
-    "newCheckIn": "New Check-in",
+    "title": "Check-In Management",
+    "newCheckIn": "New Check-In",
     "registeredGuests": "Registered Guests",
-    "checkInDetails": "Check-in Details",
+    "searchPlaceholder": "Search check-in...",
+    "formTitle": "Check-In Form",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "idType": "ID Type",
+    "idNumber": "ID Number",
     "roomNumber": "Room Number",
     "checkInDate": "Check-in Date",
     "checkOutDate": "Check-out Date",
     "numberOfGuests": "Number of Guests",
+    "register": "Register Check-In",
+    "successMessage": "Check-in completed successfully",
+    "errorMessage": "Error processing check-in",
+    "checkInDetails": "Check-in Details",
     "status": "Status",
     "statuses": {
       "active": "Active",
@@ -68,11 +87,33 @@
   "validation": {
     "required": "This field is required",
     "invalidEmail": "Invalid email address",
-    "invalidPhone": "Invalid phone number"
+    "invalidPhone": "Invalid phone number",
+    "nameMinLength": "Name is too short",
+    "nameMaxLength": "Name is too long",
+    "nameRequired": "Name is required",
+    "lastNameMinLength": "Last name is too short",
+    "lastNameMaxLength": "Last name is too long",
+    "lastNameRequired": "Last name is required",
+    "emailInvalid": "Invalid email",
+    "emailRequired": "Email is required",
+    "phoneOnlyNumbers": "Only numbers are allowed",
+    "phoneMinLength": "Phone number is too short",
+    "phoneMaxLength": "Phone number is too long",
+    "phoneRequired": "Phone number is required",
+    "idNumberRequired": "ID number is required",
+    "idTypeRequired": "ID type is required",
+    "roomNumberRequired": "Room number is required",
+    "checkInDateRequired": "Check-in date is required",
+    "checkOutDateRequired": "Check-out date is required",
+    "checkOutDateAfterCheckIn": "Check-out date must be after check-in date",
+    "positiveNumber": "Must be a positive number",
+    "integerNumber": "Must be an integer",
+    "guestsRequired": "Number of guests is required"
   },
   "pagination": {
     "rowsPerPage": "Rows per page:",
-    "of": "of"
+    "of": "of",
+    "displayedRows": "{from}-{to} of {count}"
   },
   "settings": {
     "title": "Settings",
@@ -96,11 +137,6 @@
       "cop": "COP - Colombian Peso",
       "mxn": "MXN - Mexican Peso"
     }
-  },
-  "checkIn": {
-    "title": "Check-In Management",
-    "newCheckIn": "New Check-In",
-    "registeredGuests": "Registered Guests"
   },
   "help": {
     "title": "Help and Support",
@@ -133,56 +169,10 @@
       "settingsDesc": "System settings and preferences"
     }
   },
-  "guests": {
-    "title": "Guests",
-    "search": "Search guest...",
-    "addGuest": "Add Guest",
-    "viewDetails": "View Details",
-    "columns": {
-      "name": "Name",
-      "lastName": "Last Name",
-      "email": "Email",
-      "phone": "Phone",
-      "idNumber": "ID Number",
-      "actions": "Actions"
-    },
-    "dialog": {
-      "guestDetails": "Guest Details",
-      "personalInfo": "Personal Information",
-      "fullName": "Full Name",
-      "identificationInfo": "Identification Information",
-      "idType": "ID Type",
-      "contactInfo": "Contact Information",
-      "checkInHistory": "Check-In History",
-      "noCheckIns": "This guest has no check-in records.",
-      "close": "Close"
-    },
-    "newGuest": {
-      "title": "New Guest",
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "email": "Email",
-      "phone": "Phone",
-      "idType": "ID Type",
-      "idNumber": "ID Number",
-      "cancel": "Cancel",
-      "save": "Save",
-      "requiredFields": "Please complete the required fields",
-      "successMessage": "Guest added successfully!"
-    },
-    "idTypes": {
-      "CC": "Citizen ID (CC)",
-      "TI": "Identity Card (TI)",
-      "CE": "Foreigner ID (CE)",
-      "PP": "Passport (PP)",
-      "RC": "Civil Registry (RC)",
-      "PEP": "Special Permanence Permit (PEP)",
-      "PPT": "Temporary Protection Permit (PPT)",
-      "NIT": "Tax ID (NIT)",
-      "passport": "Passport",
-      "nationalId": "National ID",
-      "driverLicense": "Driver's License"
-    }
+  "idTypes": {
+    "passport": "Passport",
+    "nationalId": "National ID",
+    "driverLicense": "Driver's License"
   },
   "dashboard": {
     "title": "Dashboard",

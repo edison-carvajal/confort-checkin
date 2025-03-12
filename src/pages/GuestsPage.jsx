@@ -219,7 +219,7 @@ const GuestsPage = () => {
                   <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('guests.columns.email')}</TableCell>
                   <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('guests.columns.phone')}</TableCell>
                   <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('guests.columns.idNumber')}</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Estancias</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('guests.columns.stays')}</TableCell>
                   <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>{t('guests.columns.actions')}</TableCell>
                 </TableRow>
               </TableHead>
@@ -269,8 +269,10 @@ const GuestsPage = () => {
               page={page}
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
-              labelRowsPerPage="Filas por página:"
-              labelDisplayedRows={({ from, to, count }) => `${from}-${to} de ${count}`}
+              labelRowsPerPage={t('pagination.rowsPerPage')}
+              labelDisplayedRows={({ from, to, count }) => {
+                return `${from}-${to} ${t('pagination.of')} ${count}`;
+              }}
             />
           </TableContainer>
         </CardContent>

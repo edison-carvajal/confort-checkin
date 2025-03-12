@@ -6,56 +6,56 @@ import { useAppContext } from '../../context/AppContext';
 import { v4 as uuidv4 } from 'uuid';
 import { useTranslation } from 'react-i18next';
 
-// Esquema de validación
-const CheckInSchema = Yup.object().shape({
-  firstName: Yup.string()
-    .min(2, 'Nombre demasiado corto')
-    .max(50, 'Nombre demasiado largo')
-    .required('El nombre es obligatorio'),
-  lastName: Yup.string()
-    .min(2, 'Apellido demasiado corto')
-    .max(50, 'Apellido demasiado largo')
-    .required('El apellido es obligatorio'),
-  email: Yup.string()
-    .email('Email inválido')
-    .required('El email es obligatorio'),
-  phone: Yup.string()
-    .matches(/^[0-9]+$/, 'Solo se permiten números')
-    .min(7, 'Número de teléfono demasiado corto')
-    .max(15, 'Número de teléfono demasiado largo')
-    .required('El teléfono es obligatorio'),
-  idNumber: Yup.string()
-    .required('El número de identificación es obligatorio'),
-  idType: Yup.string()
-    .required('El tipo de identificación es obligatorio'),
-  roomNumber: Yup.string()
-    .required('El número de habitación es obligatorio'),
-  checkInDate: Yup.date()
-    .required('La fecha de check-in es obligatoria'),
-  checkOutDate: Yup.date()
-    .min(
-      Yup.ref('checkInDate'),
-      'La fecha de check-out debe ser posterior a la fecha de check-in'
-    )
-    .required('La fecha de check-out es obligatoria'),
-  numberOfGuests: Yup.number()
-    .positive('Debe ser un número positivo')
-    .integer('Debe ser un número entero')
-    .required('El número de huéspedes es obligatorio')
-});
-
-const idTypes = [
-  { value: 'passport', label: 'Pasaporte' },
-  { value: 'nationalId', label: 'Documento de Identidad' },
-  { value: 'driverLicense', label: 'Licencia de Conducir' }
-];
-
 const CheckInForm = () => {
   const { state, actions } = useAppContext();
   const { t } = useTranslation();
   const [showAlert, setShowAlert] = React.useState(false);
   const [alertMessage, setAlertMessage] = React.useState('');
   const [alertSeverity, setAlertSeverity] = React.useState('success');
+
+  // Esquema de validación
+  const CheckInSchema = Yup.object().shape({
+    firstName: Yup.string()
+      .min(2, t('validation.nameMinLength'))
+      .max(50, t('validation.nameMaxLength'))
+      .required(t('validation.nameRequired')),
+    lastName: Yup.string()
+      .min(2, t('validation.lastNameMinLength'))
+      .max(50, t('validation.lastNameMaxLength'))
+      .required(t('validation.lastNameRequired')),
+    email: Yup.string()
+      .email(t('validation.emailInvalid'))
+      .required(t('validation.emailRequired')),
+    phone: Yup.string()
+      .matches(/^[0-9]+$/, t('validation.phoneOnlyNumbers'))
+      .min(7, t('validation.phoneMinLength'))
+      .max(15, t('validation.phoneMaxLength'))
+      .required(t('validation.phoneRequired')),
+    idNumber: Yup.string()
+      .required(t('validation.idNumberRequired')),
+    idType: Yup.string()
+      .required(t('validation.idTypeRequired')),
+    roomNumber: Yup.string()
+      .required(t('validation.roomNumberRequired')),
+    checkInDate: Yup.date()
+      .required(t('validation.checkInDateRequired')),
+    checkOutDate: Yup.date()
+      .min(
+        Yup.ref('checkInDate'),
+        t('validation.checkOutDateAfterCheckIn')
+      )
+      .required(t('validation.checkOutDateRequired')),
+    numberOfGuests: Yup.number()
+      .positive(t('validation.positiveNumber'))
+      .integer(t('validation.integerNumber'))
+      .required(t('validation.guestsRequired'))
+  });
+
+  const idTypes = [
+    { value: 'passport', label: t('idTypes.passport') },
+    { value: 'nationalId', label: t('idTypes.nationalId') },
+    { value: 'driverLicense', label: t('idTypes.driverLicense') }
+  ];
 
   const formik = useFormik({
     initialValues: {
@@ -102,7 +102,7 @@ const CheckInForm = () => {
         actions.addCheckin(checkIn);
 
         // Mostrar mensaje de éxito
-        setAlertMessage('Check-in realizado con éxito');
+        setAlertMessage(t('checkIn.successMessage'));
         setAlertSeverity('success');
         setShowAlert(true);
 
@@ -110,7 +110,7 @@ const CheckInForm = () => {
         resetForm();
       } catch (error) {
         console.error('Error al realizar el check-in:', error);
-        setAlertMessage('Error al realizar el check-in');
+        setAlertMessage(t('checkIn.errorMessage'));
         setAlertSeverity('error');
         setShowAlert(true);
       }
@@ -125,7 +125,7 @@ const CheckInForm = () => {
     <Card>
       <CardContent>
         <Typography variant="h5" component="h2" gutterBottom>
-          Formulario de Check-In
+          {t('checkIn.formTitle')}
         </Typography>
         <Box component="form" onSubmit={formik.handleSubmit} sx={{ mt: 2 }}>
           <Grid container spacing={3}>
@@ -134,7 +134,7 @@ const CheckInForm = () => {
                 fullWidth
                 id="firstName"
                 name="firstName"
-                label="Nombre"
+                label={t('checkIn.firstName')}
                 value={formik.values.firstName}
                 onChange={formik.handleChange}
                 error={formik.touched.firstName && Boolean(formik.errors.firstName)}
@@ -146,7 +146,7 @@ const CheckInForm = () => {
                 fullWidth
                 id="lastName"
                 name="lastName"
-                label="Apellido"
+                label={t('checkIn.lastName')}
                 value={formik.values.lastName}
                 onChange={formik.handleChange}
                 error={formik.touched.lastName && Boolean(formik.errors.lastName)}
@@ -158,7 +158,7 @@ const CheckInForm = () => {
                 fullWidth
                 id="email"
                 name="email"
-                label="Email"
+                label={t('checkIn.email')}
                 type="email"
                 value={formik.values.email}
                 onChange={formik.handleChange}
@@ -171,7 +171,7 @@ const CheckInForm = () => {
                 fullWidth
                 id="phone"
                 name="phone"
-                label="Teléfono"
+                label={t('checkIn.phone')}
                 value={formik.values.phone}
                 onChange={formik.handleChange}
                 error={formik.touched.phone && Boolean(formik.errors.phone)}
@@ -184,7 +184,7 @@ const CheckInForm = () => {
                 id="idType"
                 name="idType"
                 select
-                label="Tipo de Identificación"
+                label={t('checkIn.idType')}
                 value={formik.values.idType}
                 onChange={formik.handleChange}
                 error={formik.touched.idType && Boolean(formik.errors.idType)}
@@ -202,7 +202,7 @@ const CheckInForm = () => {
                 fullWidth
                 id="idNumber"
                 name="idNumber"
-                label="Número de Identificación"
+                label={t('checkIn.idNumber')}
                 value={formik.values.idNumber}
                 onChange={formik.handleChange}
                 error={formik.touched.idNumber && Boolean(formik.errors.idNumber)}
@@ -214,7 +214,7 @@ const CheckInForm = () => {
                 fullWidth
                 id="roomNumber"
                 name="roomNumber"
-                label="Número de Habitación"
+                label={t('checkIn.roomNumber')}
                 value={formik.values.roomNumber}
                 onChange={formik.handleChange}
                 error={formik.touched.roomNumber && Boolean(formik.errors.roomNumber)}
@@ -226,7 +226,7 @@ const CheckInForm = () => {
                 fullWidth
                 id="numberOfGuests"
                 name="numberOfGuests"
-                label="Número de Huéspedes"
+                label={t('checkIn.numberOfGuests')}
                 type="number"
                 value={formik.values.numberOfGuests}
                 onChange={formik.handleChange}
@@ -240,7 +240,7 @@ const CheckInForm = () => {
                 fullWidth
                 id="checkInDate"
                 name="checkInDate"
-                label="Fecha de Check-In"
+                label={t('checkIn.checkInDate')}
                 type="date"
                 value={formik.values.checkInDate}
                 onChange={formik.handleChange}
@@ -254,7 +254,7 @@ const CheckInForm = () => {
                 fullWidth
                 id="checkOutDate"
                 name="checkOutDate"
-                label="Fecha de Check-Out"
+                label={t('checkIn.checkOutDate')}
                 type="date"
                 value={formik.values.checkOutDate}
                 onChange={formik.handleChange}
@@ -272,7 +272,7 @@ const CheckInForm = () => {
                 size="large"
                 sx={{ mt: 2 }}
               >
-                Registrar Check-In
+                {t('checkIn.register')}
               </Button>
             </Grid>
           </Grid>

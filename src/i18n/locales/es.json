@@ -34,6 +34,14 @@
     "phone": "Teléfono",
     "idType": "Tipo de Identificación",
     "idNumber": "Número de Identificación",
+    "columns": {
+      "name": "Nombre",
+      "email": "Correo Electrónico",
+      "phone": "Teléfono",
+      "idNumber": "Número de ID",
+      "stays": "Estancias",
+      "actions": "Acciones"
+    },
     "idTypes": {
       "CC": "Cédula de Ciudadanía",
       "CE": "Cédula de Extranjería",
@@ -46,14 +54,25 @@
     }
   },
   "checkIn": {
-    "title": "Check-in",
-    "newCheckIn": "Nuevo Check-in",
+    "title": "Gestión de Check-In",
+    "newCheckIn": "Nuevo Check-In",
     "registeredGuests": "Huéspedes Registrados",
-    "checkInDetails": "Detalles del Check-in",
+    "searchPlaceholder": "Buscar check-in...",
+    "formTitle": "Formulario de Check-In",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo Electrónico",
+    "phone": "Teléfono",
+    "idType": "Tipo de Identificación",
+    "idNumber": "Número de Identificación",
     "roomNumber": "Número de Habitación",
     "checkInDate": "Fecha de Check-in",
     "checkOutDate": "Fecha de Check-out",
     "numberOfGuests": "Número de Huéspedes",
+    "register": "Registrar Check-In",
+    "successMessage": "Check-in realizado con éxito",
+    "errorMessage": "Error al realizar el check-in",
+    "checkInDetails": "Detalles del Check-in",
     "status": "Estado",
     "statuses": {
       "active": "Activo",
@@ -68,11 +87,33 @@
   "validation": {
     "required": "Este campo es requerido",
     "invalidEmail": "El correo electrónico no es válido",
-    "invalidPhone": "El número de teléfono no es válido"
+    "invalidPhone": "El número de teléfono no es válido",
+    "nameMinLength": "Nombre demasiado corto",
+    "nameMaxLength": "Nombre demasiado largo",
+    "nameRequired": "El nombre es obligatorio",
+    "lastNameMinLength": "Apellido demasiado corto",
+    "lastNameMaxLength": "Apellido demasiado largo",
+    "lastNameRequired": "El apellido es obligatorio",
+    "emailInvalid": "Email inválido",
+    "emailRequired": "El email es obligatorio",
+    "phoneOnlyNumbers": "Solo se permiten números",
+    "phoneMinLength": "Número de teléfono demasiado corto",
+    "phoneMaxLength": "Número de teléfono demasiado largo",
+    "phoneRequired": "El teléfono es obligatorio",
+    "idNumberRequired": "El número de identificación es obligatorio",
+    "idTypeRequired": "El tipo de identificación es obligatorio",
+    "roomNumberRequired": "El número de habitación es obligatorio",
+    "checkInDateRequired": "La fecha de check-in es obligatoria",
+    "checkOutDateRequired": "La fecha de check-out es obligatoria",
+    "checkOutDateAfterCheckIn": "La fecha de check-out debe ser posterior a la fecha de check-in",
+    "positiveNumber": "Debe ser un número positivo",
+    "integerNumber": "Debe ser un número entero",
+    "guestsRequired": "El número de huéspedes es obligatorio"
   },
   "pagination": {
     "rowsPerPage": "Filas por página:",
-    "of": "de"
+    "of": "de",
+    "displayedRows": "{from}-{to} de {count}"
   },
   "settings": {
     "title": "Configuración",
@@ -96,11 +137,6 @@
       "cop": "COP - Peso colombiano",
       "mxn": "MXN - Peso mexicano"
     }
-  },
-  "checkIn": {
-    "title": "Gestión de Check-In",
-    "newCheckIn": "Nuevo Check-In",
-    "registeredGuests": "Huéspedes Registrados"
   },
   "help": {
     "title": "Ayuda y Soporte",
@@ -133,56 +169,10 @@
       "settingsDesc": "Ajustes del sistema y preferencias"
     }
   },
-  "guests": {
-    "title": "Huéspedes",
-    "search": "Buscar huésped...",
-    "addGuest": "Agregar Huésped",
-    "viewDetails": "Ver Detalles",
-    "columns": {
-      "name": "Nombre",
-      "lastName": "Apellido",
-      "email": "Email",
-      "phone": "Teléfono",
-      "idNumber": "Número de ID",
-      "actions": "Acciones"
-    },
-    "dialog": {
-      "guestDetails": "Detalles del Huésped",
-      "personalInfo": "Información Personal",
-      "fullName": "Nombre Completo",
-      "identificationInfo": "Información de Identificación",
-      "idType": "Tipo de Documento",
-      "contactInfo": "Información de Contacto",
-      "checkInHistory": "Historial de Check-In",
-      "noCheckIns": "Este huésped no tiene registros de check-in.",
-      "close": "Cerrar"
-    },
-    "newGuest": {
-      "title": "Nuevo Huésped",
-      "firstName": "Nombre",
-      "lastName": "Apellido",
-      "email": "Email",
-      "phone": "Teléfono",
-      "idType": "Tipo de Documento",
-      "idNumber": "Número de Documento",
-      "cancel": "Cancelar",
-      "save": "Guardar",
-      "requiredFields": "Por favor complete los campos obligatorios",
-      "successMessage": "¡Huésped agregado exitosamente!"
-    },
-    "idTypes": {
-      "CC": "Cédula de Ciudadanía (CC)",
-      "TI": "Tarjeta de Identidad (TI)",
-      "CE": "Cédula de Extranjería (CE)",
-      "PP": "Pasaporte (PP)",
-      "RC": "Registro Civil (RC)",
-      "PEP": "Permiso Especial de Permanencia (PEP)",
-      "PPT": "Permiso por Protección Temporal (PPT)",
-      "NIT": "NIT",
-      "passport": "Pasaporte",
-      "nationalId": "Documento de Identidad",
-      "driverLicense": "Licencia de Conducir"
-    }
+  "idTypes": {
+    "passport": "Pasaporte",
+    "nationalId": "Documento de Identidad",
+    "driverLicense": "Licencia de Conducir"
   },
   "dashboard": {
     "title": "Tablero",
